@@ -1,0 +1,174 @@
+@import "base";
+
+html {
+    font: {
+        size: 16px;
+        family: 'Jost', sans-serif;
+    }
+}
+
+body {
+    display: flex;
+    margin: 1rem;
+    flex-direction: column;
+    background-color: $background-base-color;
+    color: $text-color;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .header-logo {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: 5rem;
+        }
+
+        .platform-title {
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+            
+            @media only screen and (max-width: 1280px)  {
+                display: none;
+        }
+        }
+    }
+
+    .header-buttons {
+        display: inline-flex;
+        justify-content: space-between;
+
+        div {
+            padding: 1rem;
+
+            &:hover {
+                color: cyan;
+                background-color: white;
+                border-radius: 0.2rem;
+            }
+
+            &:nth-child(2) {
+                margin-left: 1rem;
+            }
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+
+    .section-title {
+        margin-top: 1.5rem;
+
+        & > #top-text {
+            &::before {
+                content: '5';
+                display: inline-block;
+                width: 0.7rem;
+                font: {
+                    size: 1.2rem;
+                    weight: bold;
+                }
+
+                @media only screen and (max-width: 1280px)  {
+                    content: '3';
+                }
+            }
+        }
+    }
+
+    .top {
+        display: flex;
+        flex-direction: row-reverse;
+        
+        @media only screen and (max-width: 3 * 225px + 32px) {
+            flex-wrap: wrap-reverse;
+        }
+
+        .top-item {
+            flex: 1;
+            min-width: 225px;
+
+            @for $i from 1 through 2 {
+                &:nth-child(#{$i}) {
+                    display: block;
+
+                    @media only screen and (max-width: 1280px)  {
+                        display: none;
+                    }
+                }
+            }
+                            
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .first, .second {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 1fr;
+
+        @media only screen and (max-width: 6 * 250px - 32px) {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr 2fr;
+            grid-template-areas: 
+                ". . . ."
+                "fivePic fivePic sixPic sixPic";
+        }
+
+        @media only screen and (max-width: 4 * 250px + 32px) {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-areas: initial;
+        }
+        
+        @media only screen and (max-width: 3 * 250px + 32px) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+        }
+        
+        @media only screen and (max-width: 2 * 250px + 32px) {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+        }
+
+        .item {
+            min-width: 250px;
+
+            img {
+                width: 100%;
+            }
+
+            &:nth-child(5) {
+                @media only screen and (max-width: 6 * 250px - 32px) {
+                    grid-area: fivePic;
+                } 
+
+                @media only screen and (max-width: 4 * 250px + 32px) {
+                    grid-area: auto;
+                }
+            }
+            
+            &:nth-child(6) {
+                @media only screen and (max-width: 6 * 250px - 32px) {
+                    grid-area: sixPic;
+                }
+
+                @media only screen and (max-width: 4 * 250px + 32px) {
+                    grid-area: auto;
+                }
+            }
+        }
+    }
+}
