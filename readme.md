@@ -6,4 +6,4 @@ npm install
 npm start
 ```
 
-And now you can run it in http://localhost:1234
+Now you can run it in http://localhost:1234
