@@ -65,6 +65,7 @@ main {
     display: flex;
     flex-direction: column;
     font-size: 1.1rem;
+    overflow: hidden;
 
     .section-title {
         margin-top: 1.5rem;
@@ -119,7 +120,7 @@ main {
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: 1fr;
 
-        @media only screen and (max-width: 6 * 250px - 32px) {
+        @media only screen and (max-width: 6 * 250px + 32px) {
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: 1fr 2fr;
             grid-template-areas: 
@@ -145,13 +146,32 @@ main {
 
         .item {
             min-width: 250px;
+            
+            @media only screen and (min-width: 6 * 250px + 32px) {
+                transition: all .2s ease-in-out; 
+
+                &:hover {  
+                    transform: scale(1.2) translate(8%);
+                }
+                &:hover ~ .item{  
+                    transform: translate(20%);
+                }
+                
+                &:nth-child(6):hover {  
+                    transform: scale(1.2) translate(-8%);
+                }
+                
+                &:nth-child(6):hover + .item {  
+                    transform: translate(-20%);
+                }
+            }
 
             img {
                 width: 100%;
             }
 
             &:nth-child(5) {
-                @media only screen and (max-width: 6 * 250px - 32px) {
+                @media only screen and (max-width: 6 * 250px + 32px) {
                     grid-area: fivePic;
                 } 
 
@@ -161,7 +181,7 @@ main {
             }
             
             &:nth-child(6) {
-                @media only screen and (max-width: 6 * 250px - 32px) {
+                @media only screen and (max-width: 6 * 250px + 32px) {
                     grid-area: sixPic;
                 }
 
