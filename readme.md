@@ -7,4 +7,5 @@ npm start
 ```
 
 Now you can run it in http://localhost:1234
+
 or you can check the result here https://juanmihidgar.github.io/Laboratory1Bonus/
